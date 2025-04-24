@@ -104,3 +104,16 @@ function signup($data)
 
     return mysqli_affected_rows($KONEKSI);
 }
+
+// membuat fungsi tampil data
+function tampil($DATA){
+    global $KONEKSI;
+
+    $HASIL = mysqli_query($KONEKSI, $DATA);
+    $data = []; //menyiapkan variabel/wadah yang masih kosong untuk nantinya akan kita gunakan untuk menyimpan data yang kita query/panggil dari database
+
+    while ($row = mysqli_fetch_assoc($HASIL)) {
+        $data[] = $row; // kita masukkan datanya di sini
+    }
+    return $data; // kita kembalikan nilainya, kita munculkan
+}
